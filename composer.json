@@ -1,0 +1,19 @@
+{
+    "name": "coolmaciek/cerp",
+    "description": "Simple personal ERP application using PHP, MySQL, JavaScript.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "c00lmk",
+            "email": "maciek.kasprzak@coolmaciek.pl"
+        }
+    ],
+    "require": {
+        "php-di/php-di": "^6.0"
+    },
+    "autoload": {
+    "psr-4": {
+        "CERP\\": "src/"
+    }
+}
+}

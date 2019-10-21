@@ -4,11 +4,29 @@
 namespace CERP;
 
 
+use Psr\Http\Message\ResponseInterface;
+
 class HelloWorld
 {
-    public function announce(): void
+    private $foo;
+    private $response;
+
+    public function __construct(string $foo, ResponseInterface $response)
     {
-        echo 'Hello world';
+        $this->foo = $foo;
+        $this->response = $response;
     }
 
+    public function __invoke(): ResponseInterface
+    {
+        $response = $this->response->withHeader('Content-Type', 'text/html');
+        $response->getBody()->write("<html><head></head><body>Hello, {$this->foo} world!</body></html>");
+
+        return $response;
+    }
+
+    public function show(): void
+    {
+        echo "(foo) Hello $this->foo, world" . "\r\n";
+    }
 }
